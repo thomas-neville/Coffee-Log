@@ -27,6 +27,23 @@ namespace CoffeeLogAppv1.Controllers
                           Problem("Entity set 'ApplicationDbContext.Brew'  is null.");
         }
 
+        // GET: Show Search Form
+        public async Task<IActionResult> ShowSearchForm()
+        {
+            // TODO: update return context and problem?
+            return _context.Brew != null ?
+                        // ShowSearchForm is implied in View method
+                        View() :
+                        Problem("Entity set 'ApplicationDbContext.Brew'  is null.");
+        }
+
+        // POST: Show Search Results TODO: issue with the ShowSearchResults and SearchCoffeeName context
+        public async Task<IActionResult> ShowSearchResults(String(SearchCoffeeName))
+        {
+            // For search logic, filtering CoffeeNames based on Search entry, using anonymous function
+            return View("Index", await _context.Brew.Where(b => b.CoffeeName.Contains(SearchCoffeeName).ToListAsync());
+        }
+
         // GET: Brews/Details/5
         public async Task<IActionResult> Details(int? id)
         {
