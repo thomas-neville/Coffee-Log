@@ -1,0 +1,65 @@
+﻿@model IEnumerable<CoffeeLogAppv1.Models.Brew>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CoffeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BrewTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoseGrams)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrindSetting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WaterTemp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoffeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrewTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoseGrams)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrindSetting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WaterTemp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
